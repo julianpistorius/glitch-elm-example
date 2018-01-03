@@ -1,0 +1,204 @@
+var _julianpistorius$glitch_elm_example$Main$view = function (model) {
+	var postStyle = {
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'max-width', _1: '50vw'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'margin', _1: '1em auto'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'padding', _1: '1em'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'background-color', _1: 'lightblue'},
+					_1: {ctor: '[]'}
+				}
+			}
+		}
+	};
+	var posts = A2(
+		_elm_lang$core$List$map,
+		function (post) {
+			return A2(
+				_elm_lang$html$Html$div,
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html_Attributes$style(postStyle),
+					_1: {ctor: '[]'}
+				},
+				{
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$p,
+						{ctor: '[]'},
+						{
+							ctor: '::',
+							_0: A2(
+								_elm_lang$html$Html$strong,
+								{ctor: '[]'},
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html$text('ID: '),
+									_1: {ctor: '[]'}
+								}),
+							_1: {
+								ctor: '::',
+								_0: _elm_lang$html$Html$text(
+									_elm_lang$core$Basics$toString(post.id)),
+								_1: {ctor: '[]'}
+							}
+						}),
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$p,
+							{ctor: '[]'},
+							{
+								ctor: '::',
+								_0: A2(
+									_elm_lang$html$Html$strong,
+									{ctor: '[]'},
+									{
+										ctor: '::',
+										_0: _elm_lang$html$Html$text('Title yo: '),
+										_1: {ctor: '[]'}
+									}),
+								_1: {
+									ctor: '::',
+									_0: _elm_lang$html$Html$text(post.title),
+									_1: {ctor: '[]'}
+								}
+							}),
+						_1: {
+							ctor: '::',
+							_0: A2(
+								_elm_lang$html$Html$p,
+								{ctor: '[]'},
+								{
+									ctor: '::',
+									_0: A2(
+										_elm_lang$html$Html$strong,
+										{ctor: '[]'},
+										{
+											ctor: '::',
+											_0: _elm_lang$html$Html$text('Body: '),
+											_1: {ctor: '[]'}
+										}),
+									_1: {
+										ctor: '::',
+										_0: _elm_lang$html$Html$text(post.body),
+										_1: {ctor: '[]'}
+									}
+								}),
+							_1: {ctor: '[]'}
+						}
+					}
+				});
+		},
+		model.posts);
+	return A2(
+		_elm_lang$html$Html$div,
+		{ctor: '[]'},
+		posts);
+};
+var _julianpistorius$glitch_elm_example$Main$Post = F3(
+	function (a, b, c) {
+		return {id: a, title: b, body: c};
+	});
+var _julianpistorius$glitch_elm_example$Main$responseDecoder = A4(
+	_elm_lang$core$Json_Decode$map3,
+	_julianpistorius$glitch_elm_example$Main$Post,
+	A2(
+		_elm_lang$core$Json_Decode$at,
+		{
+			ctor: '::',
+			_0: 'id',
+			_1: {ctor: '[]'}
+		},
+		_elm_lang$core$Json_Decode$int),
+	A2(
+		_elm_lang$core$Json_Decode$at,
+		{
+			ctor: '::',
+			_0: 'title',
+			_1: {ctor: '[]'}
+		},
+		_elm_lang$core$Json_Decode$string),
+	A2(
+		_elm_lang$core$Json_Decode$at,
+		{
+			ctor: '::',
+			_0: 'body',
+			_1: {ctor: '[]'}
+		},
+		_elm_lang$core$Json_Decode$string));
+var _julianpistorius$glitch_elm_example$Main$Model = function (a) {
+	return {posts: a};
+};
+var _julianpistorius$glitch_elm_example$Main$HttpCallback = function (a) {
+	return {ctor: 'HttpCallback', _0: a};
+};
+var _julianpistorius$glitch_elm_example$Main$getPost = function (id) {
+	var url = A2(
+		_elm_lang$core$Basics_ops['++'],
+		'https://jsonplaceholder.typicode.com/posts/',
+		_elm_lang$core$Basics$toString(id));
+	return A2(
+		_elm_lang$http$Http$send,
+		_julianpistorius$glitch_elm_example$Main$HttpCallback,
+		A2(_elm_lang$http$Http$get, url, _julianpistorius$glitch_elm_example$Main$responseDecoder));
+};
+var _julianpistorius$glitch_elm_example$Main$Interval = function (a) {
+	return {ctor: 'Interval', _0: a};
+};
+var _julianpistorius$glitch_elm_example$Main$subscriptions = function (model) {
+	return A2(_elm_lang$core$Time$every, 2 * _elm_lang$core$Time$second, _julianpistorius$glitch_elm_example$Main$Interval);
+};
+var _julianpistorius$glitch_elm_example$Main$UseRandomInt = function (a) {
+	return {ctor: 'UseRandomInt', _0: a};
+};
+var _julianpistorius$glitch_elm_example$Main$getRandomInt = A2(
+	_elm_lang$core$Random$generate,
+	_julianpistorius$glitch_elm_example$Main$UseRandomInt,
+	A2(_elm_lang$core$Random$int, 1, 99));
+var _julianpistorius$glitch_elm_example$Main$init = {
+	ctor: '_Tuple2',
+	_0: {
+		posts: {ctor: '[]'}
+	},
+	_1: _julianpistorius$glitch_elm_example$Main$getRandomInt
+};
+var _julianpistorius$glitch_elm_example$Main$update = F2(
+	function (msg, model) {
+		var _p0 = msg;
+		switch (_p0.ctor) {
+			case 'Interval':
+				return {ctor: '_Tuple2', _0: model, _1: _julianpistorius$glitch_elm_example$Main$getRandomInt};
+			case 'UseRandomInt':
+				return {
+					ctor: '_Tuple2',
+					_0: model,
+					_1: _julianpistorius$glitch_elm_example$Main$getPost(_p0._0)
+				};
+			default:
+				var _p1 = _p0._0;
+				if (_p1.ctor === 'Ok') {
+					var updatedPosts = {ctor: '::', _0: _p1._0, _1: model.posts};
+					return {
+						ctor: '_Tuple2',
+						_0: _elm_lang$core$Native_Utils.update(
+							model,
+							{posts: updatedPosts}),
+						_1: _elm_lang$core$Platform_Cmd$none
+					};
+				} else {
+					var print = A2(
+						_elm_lang$core$Debug$log,
+						'Response Error',
+						_elm_lang$core$Basics$toString(_p1._0));
+					return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
+				}
+		}
+	});
+var _julianpistorius$glitch_elm_example$Main$main = _elm_lang$html$Html$program(
+	{init: _julianpistorius$glitch_elm_example$Main$init, view: _julianpistorius$glitch_elm_example$Main$view, update: _julianpistorius$glitch_elm_example$Main$update, subscriptions: _julianpistorius$glitch_elm_example$Main$subscriptions})();

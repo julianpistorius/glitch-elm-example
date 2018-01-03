@@ -9297,7 +9297,7 @@ var _elm_lang$http$Http$StringPart = F2(
 	});
 var _elm_lang$http$Http$stringPart = _elm_lang$http$Http$StringPart;
 
-var _user$project$Main$view = function (model) {
+var _julianpistorius$glitch_elm_example$Main$view = function (model) {
 	var postStyle = {
 		ctor: '::',
 		_0: {ctor: '_Tuple2', _0: 'max-width', _1: '50vw'},
@@ -9359,7 +9359,7 @@ var _user$project$Main$view = function (model) {
 									{ctor: '[]'},
 									{
 										ctor: '::',
-										_0: _elm_lang$html$Html$text('Title: '),
+										_0: _elm_lang$html$Html$text('Title yo: '),
 										_1: {ctor: '[]'}
 									}),
 								_1: {
@@ -9400,13 +9400,13 @@ var _user$project$Main$view = function (model) {
 		{ctor: '[]'},
 		posts);
 };
-var _user$project$Main$Post = F3(
+var _julianpistorius$glitch_elm_example$Main$Post = F3(
 	function (a, b, c) {
 		return {id: a, title: b, body: c};
 	});
-var _user$project$Main$responseDecoder = A4(
+var _julianpistorius$glitch_elm_example$Main$responseDecoder = A4(
 	_elm_lang$core$Json_Decode$map3,
-	_user$project$Main$Post,
+	_julianpistorius$glitch_elm_example$Main$Post,
 	A2(
 		_elm_lang$core$Json_Decode$at,
 		{
@@ -9431,53 +9431,53 @@ var _user$project$Main$responseDecoder = A4(
 			_1: {ctor: '[]'}
 		},
 		_elm_lang$core$Json_Decode$string));
-var _user$project$Main$Model = function (a) {
+var _julianpistorius$glitch_elm_example$Main$Model = function (a) {
 	return {posts: a};
 };
-var _user$project$Main$HttpCallback = function (a) {
+var _julianpistorius$glitch_elm_example$Main$HttpCallback = function (a) {
 	return {ctor: 'HttpCallback', _0: a};
 };
-var _user$project$Main$getPost = function (id) {
+var _julianpistorius$glitch_elm_example$Main$getPost = function (id) {
 	var url = A2(
 		_elm_lang$core$Basics_ops['++'],
 		'https://jsonplaceholder.typicode.com/posts/',
 		_elm_lang$core$Basics$toString(id));
 	return A2(
 		_elm_lang$http$Http$send,
-		_user$project$Main$HttpCallback,
-		A2(_elm_lang$http$Http$get, url, _user$project$Main$responseDecoder));
+		_julianpistorius$glitch_elm_example$Main$HttpCallback,
+		A2(_elm_lang$http$Http$get, url, _julianpistorius$glitch_elm_example$Main$responseDecoder));
 };
-var _user$project$Main$Interval = function (a) {
+var _julianpistorius$glitch_elm_example$Main$Interval = function (a) {
 	return {ctor: 'Interval', _0: a};
 };
-var _user$project$Main$subscriptions = function (model) {
-	return A2(_elm_lang$core$Time$every, 2 * _elm_lang$core$Time$second, _user$project$Main$Interval);
+var _julianpistorius$glitch_elm_example$Main$subscriptions = function (model) {
+	return A2(_elm_lang$core$Time$every, 2 * _elm_lang$core$Time$second, _julianpistorius$glitch_elm_example$Main$Interval);
 };
-var _user$project$Main$UseRandomInt = function (a) {
+var _julianpistorius$glitch_elm_example$Main$UseRandomInt = function (a) {
 	return {ctor: 'UseRandomInt', _0: a};
 };
-var _user$project$Main$getRandomInt = A2(
+var _julianpistorius$glitch_elm_example$Main$getRandomInt = A2(
 	_elm_lang$core$Random$generate,
-	_user$project$Main$UseRandomInt,
+	_julianpistorius$glitch_elm_example$Main$UseRandomInt,
 	A2(_elm_lang$core$Random$int, 1, 99));
-var _user$project$Main$init = {
+var _julianpistorius$glitch_elm_example$Main$init = {
 	ctor: '_Tuple2',
 	_0: {
 		posts: {ctor: '[]'}
 	},
-	_1: _user$project$Main$getRandomInt
+	_1: _julianpistorius$glitch_elm_example$Main$getRandomInt
 };
-var _user$project$Main$update = F2(
+var _julianpistorius$glitch_elm_example$Main$update = F2(
 	function (msg, model) {
 		var _p0 = msg;
 		switch (_p0.ctor) {
 			case 'Interval':
-				return {ctor: '_Tuple2', _0: model, _1: _user$project$Main$getRandomInt};
+				return {ctor: '_Tuple2', _0: model, _1: _julianpistorius$glitch_elm_example$Main$getRandomInt};
 			case 'UseRandomInt':
 				return {
 					ctor: '_Tuple2',
 					_0: model,
-					_1: _user$project$Main$getPost(_p0._0)
+					_1: _julianpistorius$glitch_elm_example$Main$getPost(_p0._0)
 				};
 			default:
 				var _p1 = _p0._0;
@@ -9499,13 +9499,13 @@ var _user$project$Main$update = F2(
 				}
 		}
 	});
-var _user$project$Main$main = _elm_lang$html$Html$program(
-	{init: _user$project$Main$init, view: _user$project$Main$view, update: _user$project$Main$update, subscriptions: _user$project$Main$subscriptions})();
+var _julianpistorius$glitch_elm_example$Main$main = _elm_lang$html$Html$program(
+	{init: _julianpistorius$glitch_elm_example$Main$init, view: _julianpistorius$glitch_elm_example$Main$view, update: _julianpistorius$glitch_elm_example$Main$update, subscriptions: _julianpistorius$glitch_elm_example$Main$subscriptions})();
 
 var Elm = {};
 Elm['Main'] = Elm['Main'] || {};
-if (typeof _user$project$Main$main !== 'undefined') {
-    _user$project$Main$main(Elm['Main'], 'Main', undefined);
+if (typeof _julianpistorius$glitch_elm_example$Main$main !== 'undefined') {
+    _julianpistorius$glitch_elm_example$Main$main(Elm['Main'], 'Main', undefined);
 }
 
 if (typeof define === "function" && define['amd'])
