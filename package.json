@@ -1,0 +1,22 @@
+{
+  "name": "elm",
+  "version": "0.0.1",
+  "main": "server.js",
+  "scripts": {
+    "start": "npm run build && node server.js",
+    "clean": "rm -rf elm-stuff && rm public/bundle.js",
+    "build": "elm-make --yes Main.elm --output public/bundle.js"
+  },
+  "dependencies": {
+    "express": "^4.15.3",
+    "elm": "0.18.0"
+  },
+  "engines": {
+    "node": "6.10.x"
+  },
+  "repository": {
+    "url": "https://glitch.com/edit/#!/elm"
+  },
+  "license": "MIT",
+  "keywords": []
+}
